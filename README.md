@@ -78,6 +78,7 @@ cd planejador-de-dieta
 
 # Abra o arquivo principal no navegador
 index.html
+```
 
 Autor
 Desenvolvido por [Marcus Torres]
