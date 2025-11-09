@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planejador de Dieta - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section id="login-section" class="login-container">
+    <h1>🥗 Planejador de Dieta</h1>
+    <div class="login-box">
+      <input type="text" id="login-user" placeholder="Usuário" required>
+      <input type="password" id="login-pass" placeholder="Senha" required>
+      <button id="login-btn">Entrar</button>
+      <button id="register-btn" class="register">Criar Conta</button>
+      <p id="login-msg"></p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <div id="app" class="hidden">
+    <aside class="sidebar">
+      <h2>🥗 Planejador</h2>
+      <nav>
+        <button class="nav-btn active" data-section="user-section">👤 Perfil</button>
+        <button class="nav-btn" data-section="meal-section">🍽️ Refeições</button>
+        <button class="nav-btn" data-section="chart-section">📊 Nutrição</button>
+        <button class="nav-btn" data-section="fitness-section">💪 Progresso</button>
+      </nav>
+      <div class="bottom-menu">
+        <button id="theme-toggle">🌙 Tema</button>
+        <button id="logout-btn" class="logout">🚪 Sair</button>
+      </div>
+    </aside>
+
+    <main>
+      <!-- PERFIL -->
+      <section id="user-section" class="card">
+        <h2>👤 Perfil do Usuário</h2>
+        <form id="user-form">
+          <input type="text" id="nome" placeholder="Nome" required>
+          <input type="number" id="peso" placeholder="Peso (kg)" required>
+          <input type="number" id="altura" placeholder="Altura (cm)" required>
+          <input type="number" id="metaCalorias" placeholder="Meta Calórica (kcal)" required>
+          <button type="submit">Salvar Perfil</button>
+        </form>
+        <div id="user-info"></div>
+        <p id="perfil-msg" class="alert good hidden">✅ Perfil salvo com sucesso!</p>
+      </section>
+
+      <!-- REFEIÇÕES -->
+      <section id="meal-section" class="card hidden">
+        <h2>🍽️ Registro de Refeições</h2>
+        <form id="meal-form">
+          <input type="text" id="alimento" placeholder="Alimento" required>
+          <input type="number" id="calorias" placeholder="Calorias" required>
+          <input type="date" id="data" required>
+          <button type="submit">Adicionar</button>
+        </form>
+
+        <h3>Total de Hoje: <span id="total-calorias">0</span> kcal</h3>
+        <div id="meal-list"></div>
+        <div id="alerta-meta" class="alert"></div>
+      </section>
+
+      <!-- GRÁFICO NUTRICIONAL -->
+      <section id="chart-section" class="card hidden">
+        <h2>📈 Evolução Nutricional</h2>
+        <canvas id="progressChart"></canvas>
+      </section>
+
+      <!-- PROGRESSO FÍSICO -->
+      <section id="fitness-section" class="card hidden">
+        <h2>💪 Progresso Físico</h2>
+        <form id="fitness-form">
+          <input type="number" id="pesoAtual" placeholder="Peso Atual (kg)" required>
+          <input type="date" id="dataPeso" required>
+          <button type="submit">Registrar Peso</button>
+        </form>
+
+        <div id="imc-info"></div>
+        <canvas id="weightChart"></canvas>
+        <button id="exportar-pdf" class="pdf-btn">📄 Exportar Relatório PDF</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 Planejador de Dieta</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
